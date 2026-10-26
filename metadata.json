@@ -1,0 +1,6 @@
+{
+  "name": "NannyMatch SA - Johannesburg, Durban & Cape Town Nanny Portal",
+  "description": "South Africa's trusted meeting portal connecting vetted nannies and families across Johannesburg, Durban, and Cape Town with subscription matching and BCEA wage compliance.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
