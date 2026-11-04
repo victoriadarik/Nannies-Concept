@@ -93,7 +93,7 @@ export const InterviewSchedulerModal: React.FC<InterviewSchedulerModalProps> = (
           <button
             onClick={onClose}
             aria-label="Close dialog"
-            className="text-stone-400 hover:text-stone-700 cursor-pointer p-1"
+            className="text-stone-400 hover:text-stone-700 cursor-pointer p-2 min-h-[44px] min-w-[44px] flex items-center justify-center rounded-xl"
           >
             <X className="w-5 h-5" />
           </button>
@@ -223,17 +223,17 @@ export const InterviewSchedulerModal: React.FC<InterviewSchedulerModalProps> = (
               </div>
             </div>
 
-            <div className="flex items-center justify-end gap-3 pt-2">
+            <div className="flex flex-col-reverse sm:flex-row items-stretch sm:items-center justify-end gap-2.5 sm:gap-3 pt-2">
               <button
                 type="button"
                 onClick={onClose}
-                className="px-4 py-2 text-stone-600 hover:text-stone-900 cursor-pointer font-medium"
+                className="px-4 py-2.5 min-h-[44px] text-stone-600 hover:text-stone-900 active:bg-stone-100 rounded-xl cursor-pointer font-medium text-center"
               >
                 Cancel
               </button>
               <button
                 type="submit"
-                className="px-5 py-2 font-semibold text-white bg-stone-900 hover:bg-stone-800 rounded-lg cursor-pointer"
+                className="px-5 py-2.5 min-h-[44px] font-semibold text-white bg-stone-900 hover:bg-stone-800 active:bg-stone-950 rounded-xl cursor-pointer shadow-xs flex items-center justify-center text-center"
               >
                 Send Interview Invitation
               </button>

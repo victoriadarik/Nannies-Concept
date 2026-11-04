@@ -116,7 +116,7 @@ export const SubscriptionModal: React.FC<SubscriptionModalProps> = ({
           <button
             onClick={onClose}
             aria-label="Close dialog"
-            className="text-stone-400 hover:text-stone-700 cursor-pointer p-1"
+            className="text-stone-400 hover:text-stone-700 cursor-pointer p-2 min-h-[44px] min-w-[44px] flex items-center justify-center rounded-xl"
           >
             <X className="w-5 h-5" />
           </button>
@@ -166,30 +166,32 @@ export const SubscriptionModal: React.FC<SubscriptionModalProps> = ({
             </div>
           )}
 
-          {/* Audience Segmented Selector */}
+          {/* Audience Segmented Selector - Large Touch Targets */}
           <div className="flex justify-center">
             <div className="grid grid-cols-2 p-1 bg-stone-100 rounded-xl text-xs font-semibold text-stone-600 w-full max-w-md">
               <button
+                type="button"
                 onClick={() => {
                   setActiveAudience('parent');
                   setSelectedPlan('parent_monthly');
                 }}
-                className={`py-2.5 rounded-lg transition-all cursor-pointer text-center ${
+                className={`py-3 min-h-[44px] rounded-lg transition-all cursor-pointer text-center flex items-center justify-center ${
                   activeAudience === 'parent'
-                    ? 'bg-white text-stone-900 shadow-xs'
+                    ? 'bg-white text-stone-900 shadow-xs font-bold'
                     : 'hover:text-stone-950'
                 }`}
               >
                 For Parents & Families
               </button>
               <button
+                type="button"
                 onClick={() => {
                   setActiveAudience('nanny');
                   setSelectedPlan('nanny_monthly');
                 }}
-                className={`py-2.5 rounded-lg transition-all cursor-pointer text-center ${
+                className={`py-3 min-h-[44px] rounded-lg transition-all cursor-pointer text-center flex items-center justify-center ${
                   activeAudience === 'nanny'
-                    ? 'bg-white text-stone-900 shadow-xs'
+                    ? 'bg-white text-stone-900 shadow-xs font-bold'
                     : 'hover:text-stone-950'
                 }`}
               >
@@ -558,7 +560,7 @@ export const SubscriptionModal: React.FC<SubscriptionModalProps> = ({
                   </div>
                 </div>
               ) : (
-                <div className="flex items-center justify-between pt-2">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-2">
                   <div className="text-xs text-stone-500">
                     Total: <span className="font-bold text-stone-900 text-sm">
                       {activeAudience === 'parent'
@@ -570,7 +572,7 @@ export const SubscriptionModal: React.FC<SubscriptionModalProps> = ({
                   <button
                     type="submit"
                     disabled={isProcessing}
-                    className="px-6 py-2.5 text-xs font-semibold text-white bg-amber-700 hover:bg-amber-800 disabled:bg-stone-400 rounded-lg cursor-pointer transition-colors shadow-xs"
+                    className="w-full sm:w-auto px-6 py-3 min-h-[44px] text-xs font-semibold text-white bg-amber-700 hover:bg-amber-800 active:bg-amber-900 disabled:bg-stone-400 rounded-xl cursor-pointer transition-colors shadow-xs flex items-center justify-center"
                   >
                     {isProcessing ? 'Authorising Payment...' : 'Confirm & Activate Subscription'}
                   </button>

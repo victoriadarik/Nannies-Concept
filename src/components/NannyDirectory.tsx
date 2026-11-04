@@ -155,77 +155,79 @@ export const NannyDirectory: React.FC<NannyDirectoryProps> = ({
       </div>
 
       {/* Interactive Filters Bar */}
-      <div className="bg-white border border-stone-200 rounded-xl p-4 sm:p-5 shadow-xs space-y-4">
-        {/* Row 1: City & Care Type Segmented Controls */}
-        <div className="flex flex-wrap items-center justify-between gap-4">
+      <div className="bg-white border border-stone-200 rounded-2xl p-3.5 sm:p-5 shadow-xs space-y-4">
+        {/* Row 1: City & Suburb Controls */}
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4">
           {/* City filter tabs */}
-          <div className="flex items-center gap-1 p-1 bg-stone-100 rounded-lg text-xs font-medium text-stone-600">
+          <div className="grid grid-cols-4 w-full sm:w-auto p-1 bg-stone-100 rounded-xl text-xs font-medium text-stone-600">
             <button
               onClick={() => { setSelectedCity('All'); setSelectedSuburb('All'); }}
-              className={`px-3 py-1.5 rounded-md transition-colors cursor-pointer ${
-                selectedCity === 'All' ? 'bg-white text-stone-900 font-semibold shadow-xs' : 'hover:text-stone-900'
+              className={`py-2 px-2.5 min-h-[38px] rounded-lg transition-colors cursor-pointer text-center truncate ${
+                selectedCity === 'All' ? 'bg-white text-stone-900 font-bold shadow-xs' : 'hover:text-stone-900'
               }`}
             >
               All SA
             </button>
             <button
               onClick={() => { setSelectedCity('Johannesburg'); setSelectedSuburb('All'); }}
-              className={`px-3 py-1.5 rounded-md transition-colors cursor-pointer ${
-                selectedCity === 'Johannesburg' ? 'bg-white text-stone-900 font-semibold shadow-xs' : 'hover:text-stone-900'
+              className={`py-2 px-2.5 min-h-[38px] rounded-lg transition-colors cursor-pointer text-center truncate ${
+                selectedCity === 'Johannesburg' ? 'bg-white text-stone-900 font-bold shadow-xs' : 'hover:text-stone-900'
               }`}
             >
-              Johannesburg
+              JHB
             </button>
             <button
               onClick={() => { setSelectedCity('Durban'); setSelectedSuburb('All'); }}
-              className={`px-3 py-1.5 rounded-md transition-colors cursor-pointer ${
-                selectedCity === 'Durban' ? 'bg-white text-stone-900 font-semibold shadow-xs' : 'hover:text-stone-900'
+              className={`py-2 px-2.5 min-h-[38px] rounded-lg transition-colors cursor-pointer text-center truncate ${
+                selectedCity === 'Durban' ? 'bg-white text-stone-900 font-bold shadow-xs' : 'hover:text-stone-900'
               }`}
             >
               Durban
             </button>
             <button
               onClick={() => { setSelectedCity('Cape Town'); setSelectedSuburb('All'); }}
-              className={`px-3 py-1.5 rounded-md transition-colors cursor-pointer ${
-                selectedCity === 'Cape Town' ? 'bg-white text-stone-900 font-semibold shadow-xs' : 'hover:text-stone-900'
+              className={`py-2 px-2.5 min-h-[38px] rounded-lg transition-colors cursor-pointer text-center truncate ${
+                selectedCity === 'Cape Town' ? 'bg-white text-stone-900 font-bold shadow-xs' : 'hover:text-stone-900'
               }`}
             >
               Cape Town
             </button>
           </div>
 
-          {/* Suburb dropdown */}
-          <div className="flex items-center gap-2 text-xs">
-            <span className="text-stone-500 font-medium">Suburb:</span>
-            <select
-              value={selectedSuburb}
-              onChange={(e) => setSelectedSuburb(e.target.value)}
-              className="bg-stone-50 border border-stone-200 text-stone-800 rounded-md px-2.5 py-1.5 focus:outline-none focus:ring-1 focus:ring-amber-500"
-            >
-              <option value="All">All Suburbs</option>
-              {availableSuburbs.map((suburb) => (
-                <option key={suburb} value={suburb}>
-                  {suburb}
-                </option>
-              ))}
-            </select>
-          </div>
+          <div className="flex flex-wrap items-center justify-between sm:justify-end gap-3 w-full sm:w-auto">
+            {/* Suburb dropdown */}
+            <div className="flex items-center gap-2 text-xs flex-1 sm:flex-none">
+              <span className="text-stone-500 font-medium whitespace-nowrap">Suburb:</span>
+              <select
+                value={selectedSuburb}
+                onChange={(e) => setSelectedSuburb(e.target.value)}
+                className="w-full sm:w-auto bg-stone-50 border border-stone-200 text-stone-800 rounded-lg px-2.5 py-2 min-h-[40px] focus:outline-none focus:ring-1 focus:ring-amber-500 cursor-pointer"
+              >
+                <option value="All">All Suburbs</option>
+                {availableSuburbs.map((suburb) => (
+                  <option key={suburb} value={suburb}>
+                    {suburb}
+                  </option>
+                ))}
+              </select>
+            </div>
 
-          {/* Rate ceiling */}
-          <div className="flex items-center gap-2 text-xs">
-            <span className="text-stone-500 font-medium">Max Monthly Rate:</span>
-            <span className="font-semibold text-stone-800 tabular-nums">
-              R{maxMonthlyRate.toLocaleString()}
-            </span>
-            <input
-              type="range"
-              min="5000"
-              max="15000"
-              step="500"
-              value={maxMonthlyRate}
-              onChange={(e) => setMaxMonthlyRate(Number(e.target.value))}
-              className="accent-amber-600 cursor-pointer w-24 sm:w-32"
-            />
+            {/* Rate ceiling */}
+            <div className="flex items-center gap-2 text-xs">
+              <span className="text-stone-500 font-medium whitespace-nowrap">Max:</span>
+              <span className="font-semibold text-stone-800 tabular-nums whitespace-nowrap">
+                R{maxMonthlyRate.toLocaleString()}
+              </span>
+              <input
+                type="range"
+                min="5000"
+                max="15000"
+                step="500"
+                value={maxMonthlyRate}
+                onChange={(e) => setMaxMonthlyRate(Number(e.target.value))}
+                className="accent-amber-600 cursor-pointer w-20 sm:w-28"
+              />
+            </div>
           </div>
         </div>
 
@@ -410,17 +412,17 @@ export const NannyDirectory: React.FC<NannyDirectoryProps> = ({
                     )}
                   </div>
 
-                  {/* Primary & secondary action buttons */}
-                  <div className="grid grid-cols-2 gap-2 text-xs font-medium">
+                  {/* Primary & secondary action buttons with min 44px touch target */}
+                  <div className="grid grid-cols-2 gap-2 text-xs font-semibold">
                     <button
                       onClick={() => onSelectNanny(nanny)}
-                      className="py-2 px-3 text-stone-800 bg-stone-100 hover:bg-stone-200 rounded-lg text-center transition-colors cursor-pointer"
+                      className="py-2.5 px-3 min-h-[44px] text-stone-800 bg-stone-100 hover:bg-stone-200 active:bg-stone-300 rounded-xl text-center transition-colors cursor-pointer flex items-center justify-center"
                     >
                       Full Profile
                     </button>
                     <button
                       onClick={() => onStartChat(nanny)}
-                      className="py-2 px-3 text-white bg-stone-900 hover:bg-stone-800 rounded-lg text-center transition-colors cursor-pointer flex items-center justify-center gap-1"
+                      className="py-2.5 px-3 min-h-[44px] text-white bg-stone-900 hover:bg-stone-800 active:bg-stone-950 rounded-xl text-center transition-colors cursor-pointer flex items-center justify-center gap-1.5 shadow-xs"
                     >
                       <MessageSquare className="w-3.5 h-3.5" />
                       <span>Message</span>

@@ -118,10 +118,10 @@ export const JobBoard: React.FC<JobBoardProps> = ({
           </div>
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-3 w-full sm:w-auto">
           <button
             onClick={() => setShowPostModal(true)}
-            className="px-4 py-2.5 text-xs font-semibold text-white bg-amber-700 hover:bg-amber-800 rounded-lg transition-colors cursor-pointer flex items-center gap-1.5 shadow-xs"
+            className="w-full sm:w-auto px-4 py-2.5 min-h-[44px] text-xs font-semibold text-white bg-amber-700 hover:bg-amber-800 active:bg-amber-900 rounded-xl transition-colors cursor-pointer flex items-center justify-center gap-1.5 shadow-xs"
           >
             <Plus className="w-4 h-4" />
             <span>Post a Family Job</span>
@@ -130,37 +130,37 @@ export const JobBoard: React.FC<JobBoardProps> = ({
       </div>
 
       {/* Filter Row */}
-      <div className="bg-white border border-stone-200 rounded-xl p-4 shadow-xs flex flex-wrap items-center justify-between gap-4">
+      <div className="bg-white border border-stone-200 rounded-2xl p-3.5 sm:p-4 shadow-xs flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4">
         {/* City Filter */}
-        <div className="flex items-center gap-1 p-1 bg-stone-100 rounded-lg text-xs font-medium text-stone-600">
+        <div className="grid grid-cols-4 w-full sm:w-auto p-1 bg-stone-100 rounded-xl text-xs font-medium text-stone-600">
           <button
             onClick={() => setSelectedCity('All')}
-            className={`px-3 py-1.5 rounded-md transition-colors cursor-pointer ${
-              selectedCity === 'All' ? 'bg-white text-stone-900 font-semibold shadow-xs' : 'hover:text-stone-900'
+            className={`py-2 px-2.5 min-h-[38px] rounded-lg transition-colors cursor-pointer text-center truncate ${
+              selectedCity === 'All' ? 'bg-white text-stone-900 font-bold shadow-xs' : 'hover:text-stone-900'
             }`}
           >
             All SA
           </button>
           <button
             onClick={() => setSelectedCity('Johannesburg')}
-            className={`px-3 py-1.5 rounded-md transition-colors cursor-pointer ${
-              selectedCity === 'Johannesburg' ? 'bg-white text-stone-900 font-semibold shadow-xs' : 'hover:text-stone-900'
+            className={`py-2 px-2.5 min-h-[38px] rounded-lg transition-colors cursor-pointer text-center truncate ${
+              selectedCity === 'Johannesburg' ? 'bg-white text-stone-900 font-bold shadow-xs' : 'hover:text-stone-900'
             }`}
           >
-            Johannesburg
+            JHB
           </button>
           <button
             onClick={() => setSelectedCity('Durban')}
-            className={`px-3 py-1.5 rounded-md transition-colors cursor-pointer ${
-              selectedCity === 'Durban' ? 'bg-white text-stone-900 font-semibold shadow-xs' : 'hover:text-stone-900'
+            className={`py-2 px-2.5 min-h-[38px] rounded-lg transition-colors cursor-pointer text-center truncate ${
+              selectedCity === 'Durban' ? 'bg-white text-stone-900 font-bold shadow-xs' : 'hover:text-stone-900'
             }`}
           >
             Durban
           </button>
           <button
             onClick={() => setSelectedCity('Cape Town')}
-            className={`px-3 py-1.5 rounded-md transition-colors cursor-pointer ${
-              selectedCity === 'Cape Town' ? 'bg-white text-stone-900 font-semibold shadow-xs' : 'hover:text-stone-900'
+            className={`py-2 px-2.5 min-h-[38px] rounded-lg transition-colors cursor-pointer text-center truncate ${
+              selectedCity === 'Cape Town' ? 'bg-white text-stone-900 font-bold shadow-xs' : 'hover:text-stone-900'
             }`}
           >
             Cape Town
@@ -168,13 +168,13 @@ export const JobBoard: React.FC<JobBoardProps> = ({
         </div>
 
         {/* Care Type Dropdown */}
-        <div className="flex items-center gap-2 text-xs">
-          <span className="text-stone-500 font-medium">Care Category:</span>
+        <div className="flex items-center gap-2 text-xs w-full sm:w-auto">
+          <span className="text-stone-500 font-medium whitespace-nowrap">Category:</span>
           <select
             value={selectedCareType}
             onChange={(e) => setSelectedCareType(e.target.value as CareType | 'All')}
             aria-label="Filter by Care Category"
-            className="bg-stone-50 border border-stone-200 text-stone-800 rounded-md px-2.5 py-1.5 focus:outline-none focus:ring-1 focus:ring-amber-500"
+            className="w-full sm:w-auto bg-stone-50 border border-stone-200 text-stone-800 rounded-lg px-2.5 py-2 min-h-[40px] focus:outline-none focus:ring-1 focus:ring-amber-500 cursor-pointer"
           >
             <option value="All">All Categories</option>
             <option value="Live-in Nanny">Live-in Nanny</option>
@@ -259,10 +259,10 @@ export const JobBoard: React.FC<JobBoardProps> = ({
                   </div>
                 </div>
 
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-2 w-full sm:w-auto">
                   <button
                     onClick={() => setActiveApplyJob(job)}
-                    className="px-4 py-2 text-xs font-semibold text-white bg-stone-900 hover:bg-stone-800 rounded-lg transition-colors cursor-pointer whitespace-nowrap flex items-center gap-1.5"
+                    className="w-full sm:w-auto px-4 py-2.5 min-h-[44px] text-xs font-semibold text-white bg-stone-900 hover:bg-stone-800 active:bg-stone-950 rounded-xl transition-colors cursor-pointer whitespace-nowrap flex items-center justify-center gap-1.5 shadow-xs"
                   >
                     <Send className="w-3.5 h-3.5" />
                     <span>Apply for Job</span>

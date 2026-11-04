@@ -146,16 +146,16 @@ export const HowItWorks: React.FC<HowItWorksProps> = ({
             Join hundreds of families and verified nannies across Johannesburg, Durban, and Cape Town today.
           </p>
         </div>
-        <div className="flex items-center gap-3 shrink-0">
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-3 shrink-0 w-full sm:w-auto">
           <button
             onClick={onExploreNannies}
-            className="px-4 py-2.5 text-xs font-semibold text-stone-800 bg-white hover:bg-stone-50 border border-stone-300 rounded-lg cursor-pointer"
+            className="w-full sm:w-auto px-4 py-2.5 min-h-[44px] text-xs font-semibold text-stone-800 bg-white hover:bg-stone-50 active:bg-stone-100 border border-stone-300 rounded-xl cursor-pointer text-center"
           >
             Explore Directory
           </button>
           <button
             onClick={onOpenSubscription}
-            className="px-5 py-2.5 text-xs font-semibold text-white bg-amber-700 hover:bg-amber-800 rounded-lg cursor-pointer shadow-xs"
+            className="w-full sm:w-auto px-5 py-2.5 min-h-[44px] text-xs font-semibold text-white bg-amber-700 hover:bg-amber-800 active:bg-amber-900 rounded-xl cursor-pointer shadow-xs text-center"
           >
             Get Subscription Pass
           </button>

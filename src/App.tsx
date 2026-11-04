@@ -156,18 +156,16 @@ export default function App() {
   return (
     <div className="min-h-screen bg-stone-50 text-stone-900 flex flex-col font-sans selection:bg-amber-200 selection:text-stone-900">
       {/* Top Banner indicating City Focus */}
-      <div className="bg-stone-950 text-stone-300 text-xs py-2 px-4 border-b border-stone-800">
-        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-1 text-center sm:text-left">
-          <div className="flex items-center gap-1.5 font-medium">
+      <div className="bg-stone-950 text-stone-300 text-[11px] sm:text-xs py-1.5 sm:py-2 px-3 sm:px-4 border-b border-stone-800">
+        <div className="max-w-7xl mx-auto flex items-center justify-between gap-2">
+          <div className="flex items-center gap-1.5 font-medium truncate">
             <span className="w-2 h-2 rounded-full bg-emerald-500 shrink-0" />
-            <span>South Africa’s Verified Meeting Portal: Johannesburg, Durban & Cape Town</span>
+            <span className="truncate">JHB · Durban · Cape Town · SAPS Vetted Childcare</span>
           </div>
-          <div className="flex items-center gap-3 text-stone-400 text-[11px]">
-            <span>SAPS Criminal Checks</span>
+          <div className="hidden md:flex items-center gap-3 text-stone-400 text-[11px] shrink-0">
+            <span>Sectoral Determination 7 Compliant</span>
             <span aria-hidden="true">·</span>
-            <span>Sectoral Determination 7 BCEA Compliant</span>
-            <span aria-hidden="true">·</span>
-            <span>Direct WhatsApp & Call Contact</span>
+            <span>Direct WhatsApp & Call Access</span>
           </div>
         </div>
       </div>
@@ -187,8 +185,8 @@ export default function App() {
         unreadCount={2}
       />
 
-      {/* Main View Router */}
-      <main className="flex-1">
+      {/* Main View Router - with bottom padding for mobile tab bar */}
+      <main className="flex-1 pb-20 lg:pb-0">
         {/* Hero is prominently displayed on the primary 'nannies' tab */}
         {activeTab === 'nannies' && (
           <>

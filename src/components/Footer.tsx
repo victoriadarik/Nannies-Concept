@@ -7,8 +7,8 @@ interface FooterProps {
 
 export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenSubscription }) => {
   return (
-    <footer className="bg-stone-900 text-stone-400 border-t border-stone-800 text-xs mt-16">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-10">
+    <footer className="bg-stone-900 text-stone-400 border-t border-stone-800 text-xs mt-12 sm:mt-16 mb-16 lg:mb-0">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12 space-y-8 sm:space-y-10">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Brand */}
           <div className="space-y-3">

@@ -58,7 +58,7 @@ export const NannyProfileModal: React.FC<NannyProfileModalProps> = ({
           <button
             onClick={onClose}
             aria-label="Close modal"
-            className="p-1.5 rounded-lg text-stone-400 hover:text-stone-700 hover:bg-stone-100 transition-colors cursor-pointer"
+            className="p-2 min-h-[44px] min-w-[44px] flex items-center justify-center rounded-xl text-stone-400 hover:text-stone-700 hover:bg-stone-100 transition-colors cursor-pointer"
           >
             <X className="w-5 h-5" />
           </button>
@@ -279,20 +279,20 @@ export const NannyProfileModal: React.FC<NannyProfileModalProps> = ({
         </div>
 
         {/* Modal Bottom Fixed Action Bar */}
-        <div className="sticky bottom-0 bg-white/95 backdrop-blur-sm border-t border-stone-200 px-6 py-4 flex flex-wrap items-center justify-between gap-3">
+        <div className="sticky bottom-0 bg-white/95 backdrop-blur-sm border-t border-stone-200 px-4 sm:px-6 py-3 sm:py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div className="text-xs text-stone-500">
             Expected: <span className="font-semibold text-stone-900">R{nanny.monthlyRateZAR.toLocaleString()}/mo</span>
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="grid grid-cols-2 sm:flex sm:items-center gap-2 w-full sm:w-auto">
             <button
               onClick={() => {
                 onClose();
                 onStartChat(nanny);
               }}
-              className="px-4 py-2 text-xs font-semibold text-stone-800 bg-stone-100 hover:bg-stone-200 rounded-lg transition-colors cursor-pointer flex items-center gap-1.5"
+              className="px-3 sm:px-4 py-2.5 min-h-[44px] text-xs font-semibold text-stone-800 bg-stone-100 hover:bg-stone-200 active:bg-stone-300 rounded-xl transition-colors cursor-pointer flex items-center justify-center gap-1.5"
             >
-              <MessageSquare className="w-3.5 h-3.5" />
+              <MessageSquare className="w-3.5 h-3.5 text-stone-700" />
               <span>Direct Chat</span>
             </button>
             <button
@@ -300,10 +300,10 @@ export const NannyProfileModal: React.FC<NannyProfileModalProps> = ({
                 onClose();
                 onOpenInterviewScheduler(nanny);
               }}
-              className="px-4 py-2 text-xs font-semibold text-white bg-stone-900 hover:bg-stone-800 rounded-lg transition-colors cursor-pointer flex items-center gap-1.5"
+              className="px-3 sm:px-4 py-2.5 min-h-[44px] text-xs font-semibold text-white bg-stone-900 hover:bg-stone-800 active:bg-stone-950 rounded-xl transition-colors cursor-pointer flex items-center justify-center gap-1.5 shadow-xs"
             >
               <Calendar className="w-3.5 h-3.5" />
-              <span>Schedule Interview</span>
+              <span>Schedule</span>
             </button>
           </div>
         </div>

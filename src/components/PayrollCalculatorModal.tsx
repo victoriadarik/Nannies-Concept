@@ -258,20 +258,20 @@ EMPLOYER STATUTORY OBLIGATIONS:
               </div>
             </div>
 
-            {/* Quick Actions */}
-            <div className="flex gap-2 pt-2">
+            {/* Quick Actions - Mobile friendly buttons */}
+            <div className="flex flex-col sm:flex-row gap-2 pt-2">
               <button
                 onClick={handleCopyPayslip}
-                className="flex-1 py-2 px-3 text-xs font-semibold text-stone-800 bg-stone-100 hover:bg-stone-200 rounded-lg transition-colors cursor-pointer flex items-center justify-center gap-1.5"
+                className="flex-1 py-2.5 px-3 min-h-[44px] text-xs font-semibold text-stone-800 bg-stone-100 hover:bg-stone-200 active:bg-stone-300 rounded-xl transition-colors cursor-pointer flex items-center justify-center gap-1.5"
               >
-                {copiedPayslip ? <Check className="w-3.5 h-3.5 text-emerald-700" /> : <Copy className="w-3.5 h-3.5" />}
+                {copiedPayslip ? <Check className="w-4 h-4 text-emerald-700" /> : <Copy className="w-4 h-4" />}
                 <span>{copiedPayslip ? 'Payslip Copied!' : 'Copy Monthly Payslip'}</span>
               </button>
               <button
                 onClick={handleCopyContract}
-                className="flex-1 py-2 px-3 text-xs font-semibold text-white bg-stone-900 hover:bg-stone-800 rounded-lg transition-colors cursor-pointer flex items-center justify-center gap-1.5"
+                className="flex-1 py-2.5 px-3 min-h-[44px] text-xs font-semibold text-white bg-stone-900 hover:bg-stone-800 active:bg-stone-950 rounded-xl transition-colors cursor-pointer flex items-center justify-center gap-1.5 shadow-xs"
               >
-                {copiedContract ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <FileText className="w-3.5 h-3.5" />}
+                {copiedContract ? <Check className="w-4 h-4 text-emerald-400" /> : <FileText className="w-4 h-4" />}
                 <span>{copiedContract ? 'Contract Copied!' : 'Copy SA Contract'}</span>
               </button>
             </div>
