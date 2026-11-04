@@ -98,8 +98,10 @@ export interface ChatMessage {
 }
 
 export interface SubscriptionState {
-  parentPlan: 'none' | 'monthly' | 'quarterly';
+  parentPlan: 'none' | 'once_off_5cv' | 'quarterly_unlimited' | 'monthly' | 'quarterly';
   parentExpiresAt?: string;
-  nannyPlan: 'none' | 'basic' | 'pro';
+  unlockedNannyIds?: string[]; // IDs of the nannies whose CV & WhatsApp numbers were unlocked (up to 5 for once_off_5cv)
+  directMessageNannyIds?: string[]; // IDs of nannies directly messaged (up to 5 for once_off_5cv)
+  nannyPlan: 'none' | 'monthly' | 'quarterly' | 'basic' | 'pro';
   nannyExpiresAt?: string;
 }

@@ -130,27 +130,27 @@ EMPLOYER STATUTORY OBLIGATIONS:
   return (
     <div id="payroll-section" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
       {/* Header */}
-      <div className="pb-4 border-b border-stone-200">
-        <div className="text-xs font-semibold uppercase tracking-wider text-amber-800">
+      <div className="pb-4 border-b border-slate-200">
+        <div className="text-xs font-semibold uppercase tracking-wider text-pink-600">
           South African Legal Compliance & Payroll
         </div>
-        <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-stone-900 mt-1">
+        <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 mt-1">
           Domestic Worker Wage, UIF & Contract Toolkit
         </h2>
-        <div className="text-xs sm:text-sm text-stone-500 mt-1">
+        <div className="text-xs sm:text-sm text-slate-500 mt-1">
           Compliant with the Basic Conditions of Employment Act (BCEA) & Sectoral Determination 7 for Johannesburg, Durban, and Cape Town
         </div>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
         {/* Left Column: Interactive Calculator (5 cols) */}
-        <div className="lg:col-span-5 bg-white border border-stone-200 rounded-xl p-5 sm:p-6 shadow-xs space-y-5">
-          <div className="flex items-center justify-between pb-3 border-b border-stone-100">
-            <h3 className="text-sm font-bold text-stone-900 flex items-center gap-2">
-              <Calculator className="w-4 h-4 text-amber-700" />
+        <div className="lg:col-span-5 bg-white border border-slate-200/80 rounded-2xl p-5 sm:p-6 shadow-xs space-y-5">
+          <div className="flex items-center justify-between pb-3 border-b border-slate-100">
+            <h3 className="text-sm font-bold text-slate-900 flex items-center gap-2">
+              <Calculator className="w-4 h-4 text-pink-600" />
               <span>Wage & UIF Calculator</span>
             </h3>
-            <span className="text-xs text-emerald-800 font-semibold bg-emerald-50 px-2 py-0.5 rounded">
+            <span className="text-xs text-emerald-800 font-semibold bg-emerald-50 px-2 py-0.5 rounded-lg border border-emerald-200/60">
               2026 Legal Rates
             </span>
           </div>
@@ -158,9 +158,9 @@ EMPLOYER STATUTORY OBLIGATIONS:
           <div className="space-y-4 text-xs">
             {/* Hourly Rate */}
             <div>
-              <div className="flex justify-between font-semibold text-stone-800 mb-1">
+              <div className="flex justify-between font-semibold text-slate-800 mb-1">
                 <span>Agreed Hourly Rate (ZAR)</span>
-                <span className="tabular-nums font-bold text-stone-900">R{hourlyRate}/hour</span>
+                <span className="tabular-nums font-bold text-pink-600">R{hourlyRate}/hour</span>
               </div>
               <input
                 type="range"
@@ -169,9 +169,9 @@ EMPLOYER STATUTORY OBLIGATIONS:
                 step="1"
                 value={hourlyRate}
                 onChange={(e) => setHourlyRate(Number(e.target.value))}
-                className="w-full accent-amber-600 cursor-pointer"
+                className="w-full accent-pink-600 cursor-pointer"
               />
-              <div className="flex justify-between text-[11px] text-stone-500 mt-1">
+              <div className="flex justify-between text-[11px] text-slate-500 mt-1">
                 <span>Legal Min: R{LEGAL_MIN_HOURLY}/hr</span>
                 <span>Market Average: R45–R65/hr</span>
               </div>
@@ -179,9 +179,9 @@ EMPLOYER STATUTORY OBLIGATIONS:
 
             {/* Weekly Hours */}
             <div>
-              <div className="flex justify-between font-semibold text-stone-800 mb-1">
+              <div className="flex justify-between font-semibold text-slate-800 mb-1">
                 <span>Weekly Hours</span>
-                <span className="tabular-nums font-bold text-stone-900">{weeklyHours} hrs/week</span>
+                <span className="tabular-nums font-bold text-slate-900">{weeklyHours} hrs/week</span>
               </div>
               <input
                 type="range"
@@ -190,9 +190,9 @@ EMPLOYER STATUTORY OBLIGATIONS:
                 step="1"
                 value={weeklyHours}
                 onChange={(e) => setWeeklyHours(Number(e.target.value))}
-                className="w-full accent-amber-600 cursor-pointer"
+                className="w-full accent-pink-600 cursor-pointer"
               />
-              <div className="flex justify-between text-[11px] text-stone-500 mt-1">
+              <div className="flex justify-between text-[11px] text-slate-500 mt-1">
                 <span>Part-time: 20 hrs</span>
                 <span>BCEA Max Normal: 45 hrs</span>
               </div>
@@ -205,54 +205,54 @@ EMPLOYER STATUTORY OBLIGATIONS:
                   type="checkbox"
                   checked={hasAccommodation}
                   onChange={(e) => setHasAccommodation(e.target.checked)}
-                  className="rounded border-stone-300 text-amber-600 focus:ring-amber-500"
+                  className="rounded border-slate-300 text-pink-600 focus:ring-pink-500"
                 />
-                <span className="font-medium text-stone-800">
+                <span className="font-medium text-slate-800">
                   Deduct accommodation (BCEA permits max 10% if private cottage provided)
                 </span>
               </label>
             </div>
 
             {/* Calculated Breakdown Card */}
-            <div className="bg-stone-50 border border-stone-200 rounded-xl p-4 space-y-2.5">
-              <div className="flex justify-between text-stone-600">
+            <div className="bg-slate-50 border border-slate-200/80 rounded-2xl p-4 space-y-2.5">
+              <div className="flex justify-between text-slate-600">
                 <span>Gross Weekly Wage:</span>
-                <span className="font-semibold text-stone-900 tabular-nums">
+                <span className="font-semibold text-slate-900 tabular-nums">
                   R{weeklyGross.toFixed(2)}
                 </span>
               </div>
 
-              <div className="flex justify-between text-stone-600">
+              <div className="flex justify-between text-slate-600">
                 <span>Gross Monthly Remuneration:</span>
-                <span className="font-bold text-stone-900 tabular-nums">
+                <span className="font-bold text-slate-900 tabular-nums">
                   R{monthlyGross.toFixed(2)}
                 </span>
               </div>
 
-              <div className="pt-2 border-t border-stone-200/80 space-y-1.5 text-[11px]">
-                <div className="flex justify-between text-stone-600">
+              <div className="pt-2 border-t border-slate-200/80 space-y-1.5 text-[11px]">
+                <div className="flex justify-between text-slate-600">
                   <span>Employee UIF Deduction (1%):</span>
-                  <span className="text-red-700 font-medium tabular-nums">-R{employeeUif.toFixed(2)}</span>
+                  <span className="text-red-600 font-medium tabular-nums">-R{employeeUif.toFixed(2)}</span>
                 </div>
                 {hasAccommodation && (
-                  <div className="flex justify-between text-stone-600">
+                  <div className="flex justify-between text-slate-600">
                     <span>Accommodation Deduction (10%):</span>
-                    <span className="text-red-700 font-medium tabular-nums">-R{accommodationDeduction.toFixed(2)}</span>
+                    <span className="text-red-600 font-medium tabular-nums">-R{accommodationDeduction.toFixed(2)}</span>
                   </div>
                 )}
-                <div className="flex justify-between text-stone-600">
+                <div className="flex justify-between text-slate-600">
                   <span>Employer UIF Contribution (1%):</span>
-                  <span className="text-stone-700 tabular-nums">+R{employerUif.toFixed(2)}</span>
+                  <span className="text-slate-700 tabular-nums">+R{employerUif.toFixed(2)}</span>
                 </div>
-                <div className="flex justify-between text-stone-600">
+                <div className="flex justify-between text-slate-600">
                   <span>Total UIF payable to SARS/uFiling:</span>
-                  <span className="font-semibold text-stone-900 tabular-nums">R{totalUif.toFixed(2)}/mo</span>
+                  <span className="font-semibold text-slate-900 tabular-nums">R{totalUif.toFixed(2)}/mo</span>
                 </div>
               </div>
 
-              <div className="pt-3 border-t border-stone-200 flex justify-between items-baseline">
-                <span className="font-bold text-stone-900 text-xs uppercase">Net Monthly Take-Home:</span>
-                <span className="text-xl font-extrabold text-amber-800 tabular-nums">
+              <div className="pt-3 border-t border-slate-200 flex justify-between items-baseline">
+                <span className="font-bold text-slate-900 text-xs uppercase">Net Monthly Take-Home:</span>
+                <span className="text-2xl font-black text-slate-950 tabular-nums">
                   R{netMonthlyPay.toFixed(2)}
                 </span>
               </div>
@@ -262,16 +262,16 @@ EMPLOYER STATUTORY OBLIGATIONS:
             <div className="flex flex-col sm:flex-row gap-2 pt-2">
               <button
                 onClick={handleCopyPayslip}
-                className="flex-1 py-2.5 px-3 min-h-[44px] text-xs font-semibold text-stone-800 bg-stone-100 hover:bg-stone-200 active:bg-stone-300 rounded-xl transition-colors cursor-pointer flex items-center justify-center gap-1.5"
+                className="flex-1 py-2.5 px-3 min-h-[44px] text-xs font-semibold text-slate-800 bg-slate-100 hover:bg-slate-200 active:bg-slate-300 rounded-xl transition-colors cursor-pointer flex items-center justify-center gap-1.5"
               >
-                {copiedPayslip ? <Check className="w-4 h-4 text-emerald-700" /> : <Copy className="w-4 h-4" />}
+                {copiedPayslip ? <Check className="w-4 h-4 text-emerald-600" /> : <Copy className="w-4 h-4 text-slate-600" />}
                 <span>{copiedPayslip ? 'Payslip Copied!' : 'Copy Monthly Payslip'}</span>
               </button>
               <button
                 onClick={handleCopyContract}
-                className="flex-1 py-2.5 px-3 min-h-[44px] text-xs font-semibold text-white bg-stone-900 hover:bg-stone-800 active:bg-stone-950 rounded-xl transition-colors cursor-pointer flex items-center justify-center gap-1.5 shadow-xs"
+                className="flex-1 py-2.5 px-3 min-h-[44px] text-xs font-semibold text-white bg-slate-950 hover:bg-slate-900 active:bg-slate-950 rounded-xl transition-colors cursor-pointer flex items-center justify-center gap-1.5 shadow-xs"
               >
-                {copiedContract ? <Check className="w-4 h-4 text-emerald-400" /> : <FileText className="w-4 h-4" />}
+                {copiedContract ? <Check className="w-4 h-4 text-pink-400" /> : <FileText className="w-4 h-4" />}
                 <span>{copiedContract ? 'Contract Copied!' : 'Copy SA Contract'}</span>
               </button>
             </div>
@@ -282,51 +282,51 @@ EMPLOYER STATUTORY OBLIGATIONS:
         <div className="lg:col-span-7 space-y-6">
           {/* 3 Core Legal Pillars for SA Employers */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
-            <div className="bg-white border border-stone-200 rounded-xl p-4 space-y-1.5 shadow-xs">
-              <div className="font-bold text-stone-900 flex items-center gap-1.5">
-                <ShieldCheck className="w-4 h-4 text-emerald-700" />
+            <div className="bg-white border border-slate-200/80 rounded-2xl p-4 space-y-1.5 shadow-xs">
+              <div className="font-bold text-slate-900 flex items-center gap-1.5">
+                <ShieldCheck className="w-4 h-4 text-emerald-600" />
                 <span>UIF Registration</span>
               </div>
-              <p className="text-stone-600 leading-relaxed text-[11px]">
-                Mandatory by law if employee works &gt;24 hours/month. Register free via <strong className="text-stone-800">uFiling.gov.za</strong>.
+              <p className="text-slate-600 leading-relaxed text-[11px]">
+                Mandatory by law if employee works &gt;24 hours/month. Register free via <strong className="text-slate-900">uFiling.gov.za</strong>.
               </p>
             </div>
 
-            <div className="bg-white border border-stone-200 rounded-xl p-4 space-y-1.5 shadow-xs">
-              <div className="font-bold text-stone-900 flex items-center gap-1.5">
-                <FileText className="w-4 h-4 text-amber-700" />
+            <div className="bg-white border border-slate-200/80 rounded-2xl p-4 space-y-1.5 shadow-xs">
+              <div className="font-bold text-slate-900 flex items-center gap-1.5">
+                <FileText className="w-4 h-4 text-pink-600" />
                 <span>Written Contract</span>
               </div>
-              <p className="text-stone-600 leading-relaxed text-[11px]">
+              <p className="text-slate-600 leading-relaxed text-[11px]">
                 Section 29 of the BCEA requires a signed contract detailing wages, hours, and notice periods from Day 1.
               </p>
             </div>
 
-            <div className="bg-white border border-stone-200 rounded-xl p-4 space-y-1.5 shadow-xs">
-              <div className="font-bold text-stone-900 flex items-center gap-1.5">
-                <Building className="w-4 h-4 text-blue-700" />
-                <span>COIDA Workplace Cover</span>
+            <div className="bg-white border border-slate-200/80 rounded-2xl p-4 space-y-1.5 shadow-xs">
+              <div className="font-bold text-slate-900 flex items-center gap-1.5">
+                <Building className="w-4 h-4 text-slate-800" />
+                <span>COIDA Cover</span>
               </div>
-              <p className="text-stone-600 leading-relaxed text-[11px]">
-                Following the Constitutional Court ruling, domestic workers are covered for workplace injuries under COIDA.
+              <p className="text-slate-600 leading-relaxed text-[11px]">
+                Following Constitutional Court ruling, domestic workers are covered for workplace injuries under COIDA.
               </p>
             </div>
           </div>
 
           {/* South African Employment Contract Preview Box */}
-          <div className="bg-white border border-stone-200 rounded-xl p-5 shadow-xs space-y-4">
-            <div className="flex items-center justify-between pb-3 border-b border-stone-100">
+          <div className="bg-white border border-slate-200/80 rounded-2xl p-5 shadow-xs space-y-4">
+            <div className="flex items-center justify-between pb-3 border-b border-slate-100">
               <div>
-                <h3 className="text-sm font-bold text-stone-900">
+                <h3 className="text-sm font-bold text-slate-900">
                   Standard SA Domestic Employment Contract Preview
                 </h3>
-                <div className="text-xs text-stone-500">
+                <div className="text-xs text-slate-500">
                   Customised with your calculated R{monthlyGross.toFixed(0)}/mo rate and {weeklyHours} hours
                 </div>
               </div>
               <button
                 onClick={handleCopyContract}
-                className="px-3 py-1.5 text-xs font-semibold text-amber-800 bg-amber-50 hover:bg-amber-100 rounded-md transition-colors cursor-pointer flex items-center gap-1"
+                className="px-3 py-1.5 text-xs font-semibold text-pink-700 bg-pink-50 hover:bg-pink-100 rounded-xl transition-colors cursor-pointer flex items-center gap-1 border border-pink-200/60"
               >
                 {copiedContract ? <Check className="w-3.5 h-3.5" /> : <Copy className="w-3.5 h-3.5" />}
                 <span>{copiedContract ? 'Copied' : 'Copy Template'}</span>
@@ -336,37 +336,37 @@ EMPLOYER STATUTORY OBLIGATIONS:
             {/* Editable Contract Details */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
               <div>
-                <label className="block text-stone-500 font-medium mb-1">Employer Family</label>
+                <label className="block text-slate-600 font-medium mb-1">Employer Family</label>
                 <input
                   type="text"
                   value={employerName}
                   onChange={(e) => setEmployerName(e.target.value)}
-                  className="w-full bg-stone-50 border border-stone-200 rounded px-2.5 py-1.5 text-stone-800"
+                  className="w-full bg-slate-50 border border-slate-200 rounded-xl px-2.5 py-1.5 text-slate-800 focus:bg-white focus:outline-none focus:ring-1 focus:ring-pink-500"
                 />
               </div>
               <div>
-                <label className="block text-stone-500 font-medium mb-1">Employee Nanny</label>
+                <label className="block text-slate-600 font-medium mb-1">Employee Nanny</label>
                 <input
                   type="text"
                   value={employeeName}
                   onChange={(e) => setEmployeeName(e.target.value)}
-                  className="w-full bg-stone-50 border border-stone-200 rounded px-2.5 py-1.5 text-stone-800"
+                  className="w-full bg-slate-50 border border-slate-200 rounded-xl px-2.5 py-1.5 text-slate-800 focus:bg-white focus:outline-none focus:ring-1 focus:ring-pink-500"
                 />
               </div>
               <div>
-                <label className="block text-stone-500 font-medium mb-1">Suburb / City</label>
+                <label className="block text-slate-600 font-medium mb-1">Suburb / City</label>
                 <input
                   type="text"
                   value={employerSuburb}
                   onChange={(e) => setEmployerSuburb(e.target.value)}
-                  className="w-full bg-stone-50 border border-stone-200 rounded px-2.5 py-1.5 text-stone-800"
+                  className="w-full bg-slate-50 border border-slate-200 rounded-xl px-2.5 py-1.5 text-slate-800 focus:bg-white focus:outline-none focus:ring-1 focus:ring-pink-500"
                 />
               </div>
             </div>
 
             {/* Contract Summary Excerpt */}
-            <div className="bg-stone-50 border border-stone-200 rounded-lg p-4 font-mono text-[11px] text-stone-700 leading-relaxed max-h-56 overflow-y-auto space-y-2">
-              <div className="font-bold text-stone-900 border-b border-stone-200 pb-1">
+            <div className="bg-slate-50 border border-slate-200/80 rounded-xl p-4 font-mono text-[11px] text-slate-700 leading-relaxed max-h-56 overflow-y-auto space-y-2">
+              <div className="font-bold text-slate-900 border-b border-slate-200 pb-1">
                 CONTRACT OF EMPLOYMENT — DOMESTIC WORKER (BCEA COMPLIANT)
               </div>
               <div>

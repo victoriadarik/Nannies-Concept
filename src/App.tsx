@@ -23,6 +23,7 @@ import { SubscriptionModal } from './components/SubscriptionModal';
 import { PayrollCalculatorModal } from './components/PayrollCalculatorModal';
 import { InterviewSchedulerModal } from './components/InterviewSchedulerModal';
 import { MessagesModal } from './components/MessagesModal';
+import { NannyCVMakerModal } from './components/NannyCVMakerModal';
 import { HowItWorks } from './components/HowItWorks';
 import { Footer } from './components/Footer';
 import { CheckCircle2, ShieldCheck, MapPin } from 'lucide-react';
@@ -76,6 +77,7 @@ export default function App() {
   const [selectedNannyModal, setSelectedNannyModal] = useState<NannyProfile | null>(null);
   const [isSubscriptionModalOpen, setIsSubscriptionModalOpen] = useState<boolean>(false);
   const [isMessagesModalOpen, setIsMessagesModalOpen] = useState<boolean>(false);
+  const [isCvMakerOpen, setIsCvMakerOpen] = useState<boolean>(false);
   const [chatTargetNanny, setChatTargetNanny] = useState<NannyProfile | null>(null);
   const [interviewTargetNanny, setInterviewTargetNanny] = useState<NannyProfile | null>(null);
 
@@ -116,6 +118,29 @@ export default function App() {
     showToast('Subscription updated successfully! All features are now unlocked.');
   };
 
+  const handleUnlockNanny = (nannyId: string) => {
+    if (subscription.parentPlan === 'quarterly_unlimited') {
+      showToast('All CVs and WhatsApp numbers are already unlocked on your 3-Month Unlimited Pass!');
+      return;
+    }
+    if (subscription.parentPlan === 'once_off_5cv') {
+      const currentUnlocked = subscription.unlockedNannyIds || [];
+      if (currentUnlocked.includes(nannyId)) return;
+      if (currentUnlocked.length < 5) {
+        const updated = [...currentUnlocked, nannyId];
+        handleUpdateSubscription({ unlockedNannyIds: updated });
+        const target = nannies.find((nan) => nan.id === nannyId);
+        showToast(`CV and WhatsApp unlocked for ${target?.name || 'caregiver'}! (${updated.length} of 5 CVs used)`);
+      } else {
+        showToast('5 of 5 CV credits used. Upgrade to 3-Month Unlimited Pass (R1,499) for unlimited access.');
+        setIsSubscriptionModalOpen(true);
+      }
+      return;
+    }
+    // Unsubscribed
+    setIsSubscriptionModalOpen(true);
+  };
+
   const handlePostJob = (
     newJobData: Omit<JobPosting, 'id' | 'postedAt' | 'applicationsCount' | 'status'>
   ) => {
@@ -154,15 +179,18 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-stone-50 text-stone-900 flex flex-col font-sans selection:bg-amber-200 selection:text-stone-900">
+    <div className="min-h-screen bg-slate-50 text-slate-900 flex flex-col font-sans selection:bg-pink-200 selection:text-pink-950">
       {/* Top Banner indicating City Focus */}
-      <div className="bg-stone-950 text-stone-300 text-[11px] sm:text-xs py-1.5 sm:py-2 px-3 sm:px-4 border-b border-stone-800">
+      <div className="bg-slate-950 text-slate-300 text-[11px] sm:text-xs py-1.5 sm:py-2 px-3 sm:px-4 border-b border-slate-800/80">
         <div className="max-w-7xl mx-auto flex items-center justify-between gap-2">
-          <div className="flex items-center gap-1.5 font-medium truncate">
-            <span className="w-2 h-2 rounded-full bg-emerald-500 shrink-0" />
-            <span className="truncate">JHB · Durban · Cape Town · SAPS Vetted Childcare</span>
+          <div className="flex items-center gap-2 font-medium truncate">
+            <span className="relative flex h-2 w-2 shrink-0">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-pink-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-pink-500"></span>
+            </span>
+            <span className="truncate">JHB · Durban · Cape Town · SAPS Vetted South African Childcare</span>
           </div>
-          <div className="hidden md:flex items-center gap-3 text-stone-400 text-[11px] shrink-0">
+          <div className="hidden md:flex items-center gap-3 text-slate-400 text-[11px] shrink-0">
             <span>Sectoral Determination 7 Compliant</span>
             <span aria-hidden="true">·</span>
             <span>Direct WhatsApp & Call Access</span>
@@ -182,6 +210,7 @@ export default function App() {
           setChatTargetNanny(nannies[0]);
           setIsMessagesModalOpen(true);
         }}
+        onOpenCvMaker={() => setIsCvMakerOpen(true)}
         unreadCount={2}
       />
 
@@ -203,6 +232,7 @@ export default function App() {
               }}
               onOpenSubscription={() => setIsSubscriptionModalOpen(true)}
               onOpenJobPostModal={() => setActiveTab('jobs')}
+              onOpenCvMaker={() => setIsCvMakerOpen(true)}
             />
 
             <NannyDirectory
@@ -239,14 +269,14 @@ export default function App() {
           <div className="py-6">
             <div className="max-w-4xl mx-auto px-4 sm:px-6">
               <div className="text-center max-w-xl mx-auto mb-8">
-                <div className="text-xs font-semibold uppercase tracking-wider text-amber-800">
+                <div className="text-xs font-semibold uppercase tracking-wider text-pink-600">
                   Transparent Meeting Portal Subscriptions
                 </div>
-                <h2 className="text-3xl font-bold text-stone-900 mt-1">
+                <h2 className="text-3xl font-bold text-slate-900 mt-1">
                   Why Both Parties Subscribe
                 </h2>
-                <p className="text-sm text-stone-600 mt-2">
-                  No R10,000 agency recruitment cuts. Both parents and nannies pay a modest subscription to guarantee genuine identities, authenticated SAPS criminal checks, and spam-free direct communication.
+                <p className="text-sm text-slate-600 mt-2 leading-relaxed">
+                  No R10,000 agency recruitment cuts. Parents choose between the <strong className="text-slate-900">R549 once-off Starter Pass</strong> (5 CVs & WhatsApp) or the <strong className="text-slate-900">R1,499 3-Month Unlimited Pass</strong>. Nannies subscribe at just <strong className="text-slate-900">R59/month</strong> or <strong className="text-slate-900">R220 for 3 months</strong> for verified SAPS badge placement.
                 </p>
               </div>
             </div>
@@ -283,6 +313,7 @@ export default function App() {
           onOpenSubscription={() => setIsSubscriptionModalOpen(true)}
           onOpenInterviewScheduler={handleOpenInterviewScheduler}
           onStartChat={handleStartChat}
+          onUnlockNanny={handleUnlockNanny}
         />
       )}
 
@@ -294,6 +325,14 @@ export default function App() {
           userRole={userRole}
           subscription={subscription}
           onUpdateSubscription={handleUpdateSubscription}
+        />
+      )}
+
+      {/* Nanny ATS CV Maker Modal */}
+      {isCvMakerOpen && (
+        <NannyCVMakerModal
+          isOpen={isCvMakerOpen}
+          onClose={() => setIsCvMakerOpen(false)}
         />
       )}
 
@@ -322,8 +361,8 @@ export default function App() {
 
       {/* Toast Notification Container */}
       {toastMessage && (
-        <div className="fixed bottom-6 right-6 z-50 bg-stone-900 text-white text-xs px-4 py-3 rounded-xl shadow-xl flex items-center gap-2.5 animate-in slide-in-from-bottom-2 duration-200">
-          <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+        <div className="fixed bottom-20 lg:bottom-6 right-4 sm:right-6 z-50 bg-slate-950 text-white text-xs px-4 py-3 rounded-2xl shadow-2xl border border-slate-800 flex items-center gap-2.5 animate-in slide-in-from-bottom-2 duration-200">
+          <CheckCircle2 className="w-4 h-4 text-pink-400 shrink-0" />
           <span>{toastMessage}</span>
         </div>
       )}
@@ -335,6 +374,7 @@ export default function App() {
           window.scrollTo({ top: 0, behavior: 'smooth' });
         }}
         onOpenSubscription={() => setIsSubscriptionModalOpen(true)}
+        onOpenCvMaker={() => setIsCvMakerOpen(true)}
       />
     </div>
   );

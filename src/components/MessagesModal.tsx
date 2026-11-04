@@ -130,25 +130,25 @@ export const MessagesModal: React.FC<MessagesModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto bg-stone-900/60 backdrop-blur-xs flex items-center justify-center p-2 sm:p-4 md:p-6 animate-in fade-in duration-150">
+    <div className="fixed inset-0 z-50 overflow-y-auto bg-slate-950/70 backdrop-blur-xs flex items-center justify-center p-2 sm:p-4 md:p-6 animate-in fade-in duration-150">
       <div 
-        className="bg-white rounded-2xl border border-stone-200 max-w-4xl w-full h-[90vh] sm:h-[85vh] max-h-[750px] shadow-2xl flex flex-col overflow-hidden relative"
+        className="bg-white rounded-2xl border border-slate-200/80 max-w-4xl w-full h-[90vh] sm:h-[85vh] max-h-[750px] shadow-2xl flex flex-col overflow-hidden relative"
         role="dialog"
         aria-modal="true"
         aria-labelledby="messages-modal-title"
       >
         {/* Top Header */}
-        <div className="px-4 sm:px-6 py-3 border-b border-stone-200 flex items-center justify-between bg-stone-50 shrink-0">
+        <div className="px-4 sm:px-6 py-3 border-b border-slate-200 flex items-center justify-between bg-slate-50 shrink-0">
           <div className="flex items-center gap-2">
-            <MessageSquare className="w-4 h-4 text-amber-700" />
-            <h2 id="messages-modal-title" className="text-xs sm:text-sm font-bold text-stone-900 truncate">
+            <MessageSquare className="w-4 h-4 text-pink-600" />
+            <h2 id="messages-modal-title" className="text-xs sm:text-sm font-bold text-slate-900 truncate">
               Direct Childcare Messages & Meeting Channel
             </h2>
           </div>
           <button
             onClick={onClose}
             aria-label="Close dialog"
-            className="text-stone-400 hover:text-stone-700 cursor-pointer p-2 min-h-[44px] min-w-[44px] flex items-center justify-center -mr-2"
+            className="text-slate-400 hover:text-slate-700 cursor-pointer p-2 min-h-[44px] min-w-[44px] flex items-center justify-center -mr-2"
           >
             <X className="w-5 h-5" />
           </button>
@@ -157,14 +157,14 @@ export const MessagesModal: React.FC<MessagesModalProps> = ({
         {/* Content Split: Responsive mobile list view vs chat view */}
         <div className="flex-1 flex overflow-hidden">
           {/* Left: Threads list (Full width on mobile when mobileView === 'list') */}
-          <div className={`w-full sm:w-72 md:w-80 border-r border-stone-200 bg-stone-50/50 flex flex-col shrink-0 ${
+          <div className={`w-full sm:w-72 md:w-80 border-r border-slate-200 bg-slate-50/50 flex flex-col shrink-0 ${
             mobileView === 'chat' ? 'hidden sm:flex' : 'flex'
           }`}>
-            <div className="p-3 border-b border-stone-200/80 text-xs font-semibold text-stone-600 uppercase tracking-wider flex items-center justify-between">
+            <div className="p-3 border-b border-slate-200/80 text-xs font-semibold text-slate-600 uppercase tracking-wider flex items-center justify-between">
               <span>Conversations</span>
-              <span className="text-[11px] text-stone-400 sm:hidden">Select to open</span>
+              <span className="text-[11px] text-slate-400 sm:hidden">Select to open</span>
             </div>
-            <div className="overflow-y-auto flex-1 divide-y divide-stone-100">
+            <div className="overflow-y-auto flex-1 divide-y divide-slate-100">
               {nannies.slice(0, 5).map((nan) => {
                 const isActive = nan.id === activeNannyId;
                 const lastMsg = messages
@@ -179,22 +179,22 @@ export const MessagesModal: React.FC<MessagesModalProps> = ({
                       setMobileView('chat');
                     }}
                     className={`w-full p-3.5 text-left transition-colors cursor-pointer flex items-start gap-3 min-h-[58px] ${
-                      isActive ? 'bg-white shadow-xs' : 'hover:bg-stone-100/70'
+                      isActive ? 'bg-pink-50/50 border-l-4 border-pink-600 shadow-xs' : 'hover:bg-slate-100/70'
                     }`}
                   >
-                    <div className="w-10 h-10 rounded-xl bg-amber-100 text-amber-900 flex items-center justify-center font-bold text-xs shrink-0 border border-amber-200">
+                    <div className="w-10 h-10 rounded-xl bg-pink-100/70 text-pink-800 flex items-center justify-center font-bold text-xs shrink-0 border border-pink-200">
                       {nan.name.split(' ').map((n) => n[0]).join('')}
                     </div>
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center justify-between">
-                        <span className="font-bold text-xs text-stone-900 truncate">
+                        <span className="font-bold text-xs text-slate-900 truncate">
                           {nan.name}
                         </span>
-                        <span className="text-[10px] text-stone-400 shrink-0 ml-1">
+                        <span className="text-[10px] text-slate-400 shrink-0 ml-1">
                           {nan.city === 'Johannesburg' ? 'JHB' : nan.city === 'Cape Town' ? 'CPT' : 'DBN'}
                         </span>
                       </div>
-                      <p className="text-[11px] text-stone-500 truncate mt-0.5">
+                      <p className="text-[11px] text-slate-500 truncate mt-0.5">
                         {lastMsg?.content || 'Click to start conversation'}
                       </p>
                     </div>
@@ -209,26 +209,26 @@ export const MessagesModal: React.FC<MessagesModalProps> = ({
             mobileView === 'list' ? 'hidden sm:flex' : 'flex'
           }`}>
             {/* Active thread header */}
-            <div className="px-3 sm:px-5 py-2.5 sm:py-3 border-b border-stone-200 flex items-center justify-between bg-white shrink-0">
+            <div className="px-3 sm:px-5 py-2.5 sm:py-3 border-b border-slate-200 flex items-center justify-between bg-white shrink-0">
               <div className="flex items-center gap-2 sm:gap-3 min-w-0">
                 {/* Mobile Back Button to conversation list */}
                 <button
                   type="button"
                   onClick={() => setMobileView('list')}
-                  className="sm:hidden p-2 -ml-1 text-stone-600 hover:text-stone-900 min-h-[44px] min-w-[44px] flex items-center justify-center rounded-lg"
+                  className="sm:hidden p-2 -ml-1 text-slate-600 hover:text-slate-900 min-h-[44px] min-w-[44px] flex items-center justify-center rounded-lg"
                   aria-label="Back to conversations"
                 >
                   <ArrowLeft className="w-5 h-5" />
                 </button>
 
-                <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-amber-100 text-amber-900 flex items-center justify-center font-bold text-xs shrink-0 border border-amber-200">
+                <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-pink-100/70 text-pink-800 flex items-center justify-center font-bold text-xs shrink-0 border border-pink-200">
                   {currentNanny.name.split(' ').map((n) => n[0]).join('')}
                 </div>
                 <div className="min-w-0">
-                  <div className="font-bold text-xs sm:text-sm text-stone-900 truncate">
+                  <div className="font-bold text-xs sm:text-sm text-slate-900 truncate">
                     {currentNanny.name}
                   </div>
-                  <div className="text-[10px] sm:text-[11px] text-stone-500 truncate">
+                  <div className="text-[10px] sm:text-[11px] text-slate-500 truncate">
                     {currentNanny.suburb}, {currentNanny.city} · SAPS Verified
                   </div>
                 </div>
@@ -237,9 +237,9 @@ export const MessagesModal: React.FC<MessagesModalProps> = ({
               <div className="flex items-center gap-2 shrink-0">
                 <button
                   onClick={() => onOpenInterviewScheduler(currentNanny)}
-                  className="px-2.5 sm:px-3 py-1.5 min-h-[38px] text-xs font-semibold text-stone-800 bg-stone-100 hover:bg-stone-200 rounded-lg transition-colors cursor-pointer flex items-center gap-1"
+                  className="px-2.5 sm:px-3 py-1.5 min-h-[38px] text-xs font-semibold text-slate-800 bg-slate-100 hover:bg-slate-200 rounded-xl transition-colors cursor-pointer flex items-center gap-1"
                 >
-                  <Calendar className="w-3.5 h-3.5 text-stone-700" />
+                  <Calendar className="w-3.5 h-3.5 text-pink-600" />
                   <span className="hidden md:inline">Schedule Interview</span>
                   <span className="md:hidden">Meet</span>
                 </button>
@@ -247,25 +247,38 @@ export const MessagesModal: React.FC<MessagesModalProps> = ({
             </div>
 
             {/* Locked notice if unsubscribed */}
-            {!isParentSubscribed && userRole !== 'nanny' && (
-              <div className="bg-amber-50/90 border-b border-amber-200 px-3 sm:px-4 py-2 flex items-center justify-between text-xs text-amber-900">
+            {!isParentSubscribed && userRole !== 'nanny' ? (
+              <div className="bg-pink-50/90 border-b border-pink-200 px-3 sm:px-4 py-2 flex items-center justify-between text-xs text-pink-950">
                 <div className="flex items-center gap-2 truncate pr-2">
-                  <Lock className="w-3.5 h-3.5 text-amber-700 shrink-0" />
+                  <Lock className="w-3.5 h-3.5 text-pink-600 shrink-0" />
                   <span className="truncate text-[11px] sm:text-xs">
-                    Get <strong>Parent Pass (R249/mo)</strong> to unlock direct WhatsApp & phone numbers.
+                    Get <strong>Starter Pass (R549 once-off)</strong> or <strong>3-Month Unlimited (R1,499)</strong> for direct WhatsApp & contacts.
                   </span>
                 </div>
                 <button
                   onClick={onOpenSubscription}
-                  className="px-2.5 py-1 text-[11px] font-bold bg-amber-700 text-white rounded-md hover:bg-amber-800 cursor-pointer shrink-0 min-h-[32px]"
+                  className="px-3 py-1.5 text-[11px] font-bold bg-pink-600 text-white rounded-lg hover:bg-pink-700 cursor-pointer shrink-0 min-h-[34px]"
                 >
-                  Upgrade
+                  Get Pass
+                </button>
+              </div>
+            ) : subscription.parentPlan === 'once_off_5cv' && (
+              <div className="bg-slate-900 text-slate-300 border-b border-slate-800 px-3 sm:px-4 py-1.5 flex items-center justify-between text-[11px]">
+                <div className="flex items-center gap-1.5">
+                  <span className="w-2 h-2 rounded-full bg-emerald-400" />
+                  <span>Starter Pass Active: Direct messaging enabled for up to 5 nannies</span>
+                </div>
+                <button
+                  onClick={onOpenSubscription}
+                  className="text-pink-400 hover:text-pink-300 font-bold underline cursor-pointer"
+                >
+                  Upgrade to Unlimited (R1,499)
                 </button>
               </div>
             )}
 
             {/* Messages Scroll Area */}
-            <div className="flex-1 p-3 sm:p-4 overflow-y-auto space-y-3 bg-stone-50/30">
+            <div className="flex-1 p-3 sm:p-4 overflow-y-auto space-y-3 bg-slate-50/40">
               {threadMessages.map((msg) => {
                 const isMe = msg.senderRole === (userRole === 'nanny' ? 'nanny' : 'parent');
 
@@ -274,14 +287,14 @@ export const MessagesModal: React.FC<MessagesModalProps> = ({
                     key={msg.id}
                     className={`flex flex-col ${isMe ? 'items-end' : 'items-start'}`}
                   >
-                    <div className="text-[10px] text-stone-400 mb-0.5 px-1">
+                    <div className="text-[10px] text-slate-400 mb-0.5 px-1">
                       {msg.senderName} · {msg.timestamp}
                     </div>
                     <div
                       className={`max-w-[85%] sm:max-w-[80%] rounded-2xl px-3.5 sm:px-4 py-2 sm:py-2.5 text-xs sm:text-sm leading-relaxed ${
                         isMe
-                          ? 'bg-amber-700 text-white rounded-br-xs'
-                          : 'bg-white border border-stone-200 text-stone-800 rounded-bl-xs shadow-xs'
+                          ? 'bg-slate-950 text-white rounded-br-xs'
+                          : 'bg-white border border-slate-200 text-slate-800 rounded-bl-xs shadow-xs'
                       }`}
                     >
                       {msg.content}
@@ -292,17 +305,17 @@ export const MessagesModal: React.FC<MessagesModalProps> = ({
             </div>
 
             {/* Input Bar with min 44px touch targets */}
-            <form onSubmit={handleSendMessage} className="p-2 sm:p-3 border-t border-stone-200 bg-white shrink-0 flex items-center gap-2">
+            <form onSubmit={handleSendMessage} className="p-2 sm:p-3 border-t border-slate-200 bg-white shrink-0 flex items-center gap-2">
               <input
                 type="text"
                 placeholder={`Message ${currentNanny.name}...`}
                 value={inputText}
                 onChange={(e) => setInputText(e.target.value)}
-                className="flex-1 bg-stone-50 border border-stone-200 rounded-xl px-3 py-2.5 min-h-[44px] text-xs sm:text-sm text-stone-900 focus:bg-white focus:outline-none focus:ring-1 focus:ring-amber-500"
+                className="flex-1 bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 min-h-[44px] text-xs sm:text-sm text-slate-900 focus:bg-white focus:outline-none focus:ring-1 focus:ring-pink-500"
               />
               <button
                 type="submit"
-                className="px-4 py-2.5 min-h-[44px] bg-stone-900 hover:bg-stone-800 active:bg-stone-950 text-white rounded-xl text-xs font-semibold cursor-pointer transition-colors flex items-center justify-center gap-1.5 shrink-0"
+                className="px-4 py-2.5 min-h-[44px] bg-pink-600 hover:bg-pink-700 active:bg-pink-800 text-white rounded-xl text-xs font-semibold cursor-pointer transition-colors flex items-center justify-center gap-1.5 shrink-0 shadow-xs"
               >
                 <Send className="w-3.5 h-3.5" />
                 <span className="hidden sm:inline">Send</span>

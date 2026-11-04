@@ -1,6 +1,6 @@
 import React from 'react';
 import { SouthAfricanCity, CareType } from '../types';
-import { Search, ShieldCheck, CheckCircle2, ArrowRight } from 'lucide-react';
+import { Search, ShieldCheck, CheckCircle2, ArrowRight, MapPin, HeartHandshake, Sparkles } from 'lucide-react';
 
 interface HeroProps {
   selectedCity: SouthAfricanCity | 'All';
@@ -12,6 +12,7 @@ interface HeroProps {
   onExploreClick: () => void;
   onOpenSubscription: () => void;
   onOpenJobPostModal: () => void;
+  onOpenCvMaker?: () => void;
 }
 
 export const Hero: React.FC<HeroProps> = ({
@@ -24,75 +25,110 @@ export const Hero: React.FC<HeroProps> = ({
   onExploreClick,
   onOpenSubscription,
   onOpenJobPostModal,
+  onOpenCvMaker,
 }) => {
   return (
-    <section className="relative bg-gradient-to-b from-amber-50/60 via-stone-50 to-stone-100/40 border-b border-stone-200 pt-6 pb-10 sm:pt-10 sm:pb-14 px-3.5 sm:px-6 lg:px-8">
+    <section className="relative bg-gradient-to-b from-slate-100/70 via-slate-50 to-white border-b border-slate-200/80 pt-6 pb-12 sm:pt-10 sm:pb-16 px-3.5 sm:px-6 lg:px-8 overflow-hidden">
+      {/* Subtle modern ambient background glow in Brand Rose-Pink and Deep Blue */}
+      <div className="absolute top-0 right-1/4 -z-10 w-96 h-96 bg-pink-100/60 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/3 left-0 -z-10 w-96 h-96 bg-blue-100/40 rounded-full blur-3xl pointer-events-none" />
+
       <div className="max-w-7xl mx-auto">
         {/* Main Hero Split */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
-          {/* Left Column: Value proposition */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+          {/* Left Column: Brand Statement & Proposition */}
           <div className="lg:col-span-7 space-y-4 sm:space-y-6">
-            {/* Quiet context kicker */}
-            <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 text-[11px] sm:text-xs font-semibold tracking-wide text-amber-800 uppercase">
-              <span>South Africa</span>
-              <span aria-hidden="true">·</span>
-              <span>Johannesburg</span>
-              <span aria-hidden="true">·</span>
-              <span>Durban</span>
-              <span aria-hidden="true">·</span>
-              <span>Cape Town</span>
+            {/* Context Badge in Dark Blue & Pink with Official Logo */}
+            <div className="flex flex-wrap items-center gap-2.5">
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-pink-50 border border-pink-200/80 text-pink-700 text-xs font-bold tracking-tight">
+                <span className="w-2 h-2 rounded-full bg-pink-600 animate-pulse" />
+                <span>South Africa’s Vetted Childcare Meeting Portal</span>
+              </div>
+              {onOpenCvMaker && (
+                <button
+                  onClick={onOpenCvMaker}
+                  className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold cursor-pointer transition-colors shadow-xs"
+                >
+                  <Sparkles className="w-3 h-3 text-pink-400" />
+                  <span>Nanny ATS CV Maker (+R50 Redesign)</span>
+                </button>
+              )}
             </div>
 
-            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-stone-900 leading-[1.15]" style={{ textWrap: 'balance' }}>
-              The vetted meeting portal for South African nannies and families.
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-950 leading-[1.12]" style={{ textWrap: 'balance' }}>
+              Where loving families hire <span className="text-pink-600 underline decoration-pink-300 decoration-wavy decoration-2 underline-offset-6">vetted nannies</span> directly.
             </h1>
 
-            <p className="text-sm sm:text-base lg:text-lg text-stone-600 leading-relaxed max-w-2xl">
-              Connect directly with trusted, background-checked domestic caregivers, au pairs, and newborn night nurses. Both parents and nannies subscribe for verified safety, direct WhatsApp chat, and fair BCEA wage compliance—no hidden agency cuts.
+            <p className="text-sm sm:text-base lg:text-lg text-slate-600 leading-relaxed max-w-2xl font-normal">
+              Skip traditional R10,000 agency recruitment fees. Both parents and caregivers connect with verified SAPS police clearance, direct WhatsApp numbers, and legal BCEA wage contracts in <strong className="text-slate-900 font-semibold">Johannesburg</strong>, <strong className="text-slate-900 font-semibold">Durban</strong>, and <strong className="text-slate-900 font-semibold">Cape Town</strong>. Parent passes from <strong className="text-slate-950">R549 once-off (5 CVs & WhatsApp)</strong> or <strong className="text-slate-950">R1,499 (3-Month Unlimited)</strong>.
             </p>
 
-            {/* Quick Action buttons - Mobile Touch Friendly */}
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-3 pt-1 sm:pt-2">
+            {/* Quick Action CTA Group */}
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-2">
               <button
                 onClick={onExploreClick}
-                className="w-full sm:w-auto px-5 py-3 min-h-[46px] text-xs sm:text-sm font-semibold text-white bg-amber-600 hover:bg-amber-700 active:bg-amber-800 rounded-xl sm:rounded-lg transition-colors shadow-xs whitespace-nowrap cursor-pointer flex items-center justify-center gap-2"
+                className="px-6 py-3.5 min-h-[48px] text-xs sm:text-sm font-bold text-white bg-pink-600 hover:bg-pink-700 active:bg-pink-800 rounded-xl transition-all shadow-md shadow-pink-600/25 whitespace-nowrap cursor-pointer flex items-center justify-center gap-2 group"
               >
                 <span>Browse Verified Nannies</span>
-                <ArrowRight className="w-4 h-4 shrink-0" />
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
               </button>
               <button
                 onClick={onOpenJobPostModal}
-                className="w-full sm:w-auto px-5 py-3 min-h-[46px] text-xs sm:text-sm font-semibold text-stone-800 bg-white hover:bg-stone-50 active:bg-stone-100 border border-stone-300 rounded-xl sm:rounded-lg transition-colors whitespace-nowrap cursor-pointer text-center"
+                className="px-5 py-3.5 min-h-[48px] text-xs sm:text-sm font-bold text-slate-800 bg-white hover:bg-slate-50 active:bg-slate-100 border border-slate-300 rounded-xl transition-all whitespace-nowrap cursor-pointer text-center shadow-xs"
               >
-                Post a Family Job (Free)
+                Post a Family Vacancy (Free)
               </button>
-              <button
-                onClick={onOpenSubscription}
-                className="w-full sm:w-auto px-4 py-2.5 min-h-[42px] text-xs sm:text-sm font-medium text-stone-600 hover:text-stone-900 transition-colors whitespace-nowrap cursor-pointer text-center underline underline-offset-4"
-              >
-                View Subscription Plans
-              </button>
+              {onOpenCvMaker && (
+                <button
+                  onClick={onOpenCvMaker}
+                  className="px-4 py-3 min-h-[44px] text-xs sm:text-sm font-bold text-pink-700 bg-pink-50 hover:bg-pink-100 border border-pink-200 rounded-xl transition-colors whitespace-nowrap cursor-pointer text-center flex items-center justify-center gap-1.5"
+                >
+                  <Sparkles className="w-3.5 h-3.5" />
+                  <span>Build ATS CV</span>
+                </button>
+              )}
+            </div>
+
+            {/* Trust Markers Bar */}
+            <div className="pt-2 flex flex-wrap items-center gap-y-2 gap-x-5 text-xs text-slate-500 font-medium">
+              <span className="flex items-center gap-1.5 text-slate-700">
+                <ShieldCheck className="w-4 h-4 text-pink-600 shrink-0" />
+                SAPS Criminal Record Verified
+              </span>
+              <span className="flex items-center gap-1.5 text-slate-700">
+                <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                Authenticated Former Families
+              </span>
+              <span className="flex items-center gap-1.5 text-slate-700">
+                <HeartHandshake className="w-4 h-4 text-blue-700 shrink-0" />
+                Zero Salary Cuts
+              </span>
             </div>
           </div>
 
-          {/* Right Column: Interactive Search & City Card */}
-          <div className="lg:col-span-5 bg-white rounded-2xl border border-stone-200/90 shadow-sm p-4 sm:p-6 space-y-4 sm:space-y-5">
-            <div className="flex items-center justify-between pb-3 border-b border-stone-100">
-              <div className="text-sm font-bold text-stone-900">Find Vetted Childcare</div>
-              <div className="text-xs text-stone-500">Updated Daily in SA</div>
+          {/* Right Column: Modern Quick Match Search Card in Deep Blue */}
+          <div className="lg:col-span-5 bg-slate-900 text-white rounded-3xl p-5 sm:p-7 shadow-2xl shadow-slate-950/20 border border-slate-800 space-y-5 relative">
+            <div className="flex items-center justify-between pb-3 border-b border-slate-800">
+              <div>
+                <div className="text-base font-bold text-white tracking-tight">Quick Nanny Finder</div>
+                <div className="text-xs text-slate-400 mt-0.5">Live database in Gauteng, KZN & Western Cape</div>
+              </div>
+              <span className="w-2.5 h-2.5 rounded-full bg-pink-500 shadow-sm shadow-pink-500/50" />
             </div>
 
-            {/* City Segmented Buttons - Large touch targets */}
+            {/* City Segmented Control with Brand Pink Accent */}
             <div>
-              <label className="block text-xs font-semibold text-stone-700 mb-2">
-                Select Metro Region
+              <label className="block text-xs font-semibold text-slate-300 mb-2">
+                1. Select South African Metro
               </label>
-              <div className="grid grid-cols-4 gap-1 p-1 bg-stone-100 rounded-xl text-xs font-medium text-stone-600">
+              <div className="grid grid-cols-4 gap-1 p-1 bg-slate-950 rounded-xl text-xs font-semibold text-slate-400 border border-slate-800">
                 <button
                   type="button"
                   onClick={() => setSelectedCity('All')}
-                  className={`py-2.5 min-h-[40px] rounded-lg transition-all cursor-pointer truncate text-[11px] sm:text-xs ${
-                    selectedCity === 'All' ? 'bg-white text-stone-950 font-bold shadow-xs' : 'hover:text-stone-900'
+                  className={`py-2.5 min-h-[40px] rounded-lg transition-all cursor-pointer truncate text-center ${
+                    selectedCity === 'All'
+                      ? 'bg-pink-600 text-white font-bold shadow-md shadow-pink-600/30'
+                      : 'hover:text-white hover:bg-slate-900'
                   }`}
                 >
                   All SA
@@ -100,8 +136,10 @@ export const Hero: React.FC<HeroProps> = ({
                 <button
                   type="button"
                   onClick={() => setSelectedCity('Johannesburg')}
-                  className={`py-2.5 min-h-[40px] rounded-lg transition-all cursor-pointer truncate text-[11px] sm:text-xs ${
-                    selectedCity === 'Johannesburg' ? 'bg-white text-stone-950 font-bold shadow-xs' : 'hover:text-stone-900'
+                  className={`py-2.5 min-h-[40px] rounded-lg transition-all cursor-pointer truncate text-center ${
+                    selectedCity === 'Johannesburg'
+                      ? 'bg-pink-600 text-white font-bold shadow-md shadow-pink-600/30'
+                      : 'hover:text-white hover:bg-slate-900'
                   }`}
                 >
                   JHB
@@ -109,8 +147,10 @@ export const Hero: React.FC<HeroProps> = ({
                 <button
                   type="button"
                   onClick={() => setSelectedCity('Durban')}
-                  className={`py-2.5 min-h-[40px] rounded-lg transition-all cursor-pointer truncate text-[11px] sm:text-xs ${
-                    selectedCity === 'Durban' ? 'bg-white text-stone-950 font-bold shadow-xs' : 'hover:text-stone-900'
+                  className={`py-2.5 min-h-[40px] rounded-lg transition-all cursor-pointer truncate text-center ${
+                    selectedCity === 'Durban'
+                      ? 'bg-pink-600 text-white font-bold shadow-md shadow-pink-600/30'
+                      : 'hover:text-white hover:bg-slate-900'
                   }`}
                 >
                   Durban
@@ -118,8 +158,10 @@ export const Hero: React.FC<HeroProps> = ({
                 <button
                   type="button"
                   onClick={() => setSelectedCity('Cape Town')}
-                  className={`py-2.5 min-h-[40px] rounded-lg transition-all cursor-pointer truncate text-[11px] sm:text-xs ${
-                    selectedCity === 'Cape Town' ? 'bg-white text-stone-950 font-bold shadow-xs' : 'hover:text-stone-900'
+                  className={`py-2.5 min-h-[40px] rounded-lg transition-all cursor-pointer truncate text-center ${
+                    selectedCity === 'Cape Town'
+                      ? 'bg-pink-600 text-white font-bold shadow-md shadow-pink-600/30'
+                      : 'hover:text-white hover:bg-slate-900'
                   }`}
                 >
                   CPT
@@ -127,86 +169,142 @@ export const Hero: React.FC<HeroProps> = ({
               </div>
             </div>
 
-            {/* Care Type Selection */}
+            {/* Care Category Select */}
             <div>
-              <label className="block text-xs font-semibold text-stone-700 mb-1.5">
-                Care Needed
+              <label className="block text-xs font-semibold text-slate-300 mb-1.5">
+                2. Type of Care Needed
               </label>
               <select
                 value={selectedCareType}
                 onChange={(e) => setSelectedCareType(e.target.value as CareType | 'All')}
-                aria-label="Select Care Needed"
-                className="w-full text-xs sm:text-sm bg-stone-50 border border-stone-200 rounded-xl px-3 py-3 min-h-[44px] text-stone-800 focus:bg-white focus:outline-none focus:ring-2 focus:ring-amber-500 cursor-pointer"
+                aria-label="Select Type of Care Needed"
+                className="w-full text-xs sm:text-sm bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-3 min-h-[44px] text-white focus:outline-none focus:ring-2 focus:ring-pink-500 cursor-pointer"
               >
-                <option value="All">All Care Types</option>
-                <option value="Live-in Nanny">Full-time Live-in Nanny</option>
-                <option value="Live-out Nanny">Full-time Live-out Nanny</option>
-                <option value="Au Pair">Au Pair & Homework Tutor</option>
-                <option value="Night Nurse & Newborn">Night Nurse & Infant Specialist</option>
-                <option value="Weekend / Babysitter">Weekend & Casual Babysitter</option>
+                <option value="All" className="bg-slate-900 text-white">All Childcare Roles</option>
+                <option value="Live-in Nanny" className="bg-slate-900 text-white">Full-time Live-in Nanny</option>
+                <option value="Live-out Nanny" className="bg-slate-900 text-white">Full-time Live-out Nanny</option>
+                <option value="Au Pair" className="bg-slate-900 text-white">Au Pair & Homework Tutor</option>
+                <option value="Night Nurse & Newborn" className="bg-slate-900 text-white">Night Nurse & Infant Specialist</option>
+                <option value="Weekend / Babysitter" className="bg-slate-900 text-white">Weekend & Babysitter</option>
               </select>
             </div>
 
-            {/* Keyword / Suburb Search Input */}
+            {/* Suburb Search Input */}
             <div>
-              <label className="block text-xs font-semibold text-stone-700 mb-1.5">
-                Search Suburb or Qualification
+              <label className="block text-xs font-semibold text-slate-300 mb-1.5">
+                3. Suburb or Skill Keyword
               </label>
               <div className="relative">
-                <Search className="w-4 h-4 text-stone-400 absolute left-3 top-1/2 -translate-y-1/2" />
+                <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
                 <input
                   type="text"
-                  placeholder="e.g. Sandton, Umhlanga, Camps Bay..."
+                  placeholder="e.g. Sandton, Umhlanga, Camps Bay, CPR..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-9 pr-3 py-3 min-h-[44px] text-xs sm:text-sm bg-stone-50 border border-stone-200 rounded-xl text-stone-800 focus:bg-white focus:outline-none focus:ring-2 focus:ring-amber-500"
+                  className="w-full pl-10 pr-3.5 py-3 min-h-[44px] text-xs sm:text-sm bg-slate-950 border border-slate-800 rounded-xl text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-pink-500"
                 />
               </div>
             </div>
 
-            {/* Search CTA - Full-width Touch Button */}
+            {/* Search Submit CTA */}
             <button
               onClick={onExploreClick}
-              className="w-full py-3 min-h-[48px] px-4 text-sm font-semibold text-white bg-stone-900 hover:bg-stone-800 active:bg-stone-950 rounded-xl transition-colors cursor-pointer flex items-center justify-center gap-2 shadow-xs"
+              className="w-full py-3.5 min-h-[48px] px-4 text-sm font-bold text-white bg-pink-600 hover:bg-pink-700 active:bg-pink-800 rounded-xl transition-all cursor-pointer flex items-center justify-center gap-2 shadow-lg shadow-pink-600/30"
             >
-              <span>Search Available Caregivers</span>
+              <span>Explore Available Nannies</span>
+              <ArrowRight className="w-4 h-4" />
             </button>
 
-            {/* Trust Markers */}
-            <div className="pt-2 text-[11px] sm:text-xs text-stone-500 flex items-center justify-between border-t border-stone-100">
+            {/* Bottom Guarantee Kicker */}
+            <div className="pt-2 text-[11px] text-slate-400 flex items-center justify-between border-t border-slate-800">
               <span className="flex items-center gap-1">
-                <ShieldCheck className="w-3.5 h-3.5 text-emerald-700 shrink-0" />
-                SAPS criminal checked
+                <ShieldCheck className="w-3.5 h-3.5 text-pink-400 shrink-0" />
+                POPIA privacy compliant
               </span>
-              <span className="flex items-center gap-1">
-                <CheckCircle2 className="w-3.5 h-3.5 text-amber-700 shrink-0" />
-                Verified former families
+              <span className="text-slate-300 font-medium">
+                Direct phone unlock on subscription
               </span>
             </div>
           </div>
         </div>
 
-        {/* 4-Column Proof & Rigor Strip - Responsive 2x2 grid on mobile */}
-        <div className="mt-8 sm:mt-12 pt-6 sm:pt-8 border-t border-stone-200/80 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 text-stone-700">
-          <div className="bg-white/50 sm:bg-transparent p-3 sm:p-0 rounded-xl border border-stone-200/50 sm:border-0">
-            <div className="text-xl sm:text-2xl font-bold text-stone-900 tabular-nums">1,280+</div>
-            <div className="text-[11px] sm:text-xs text-stone-500 mt-0.5">SAPS Vetted Caregivers</div>
-            <div className="text-[11px] sm:text-xs text-stone-600 mt-0.5">Police cleared & ID checked</div>
+        {/* Metro Spotlight Cards: Johannesburg, Durban, Cape Town */}
+        <div className="mt-12 pt-8 border-t border-slate-200/80">
+          <div className="text-xs font-bold uppercase tracking-wider text-slate-500 mb-4">
+            Browse By Core Metropolitan Hubs
           </div>
-          <div className="bg-white/50 sm:bg-transparent p-3 sm:p-0 rounded-xl border border-stone-200/50 sm:border-0">
-            <div className="text-xl sm:text-2xl font-bold text-stone-900 tabular-nums">R27.58+</div>
-            <div className="text-[11px] sm:text-xs text-stone-500 mt-0.5">BCEA Legal Compliance</div>
-            <div className="text-[11px] sm:text-xs text-stone-600 mt-0.5">Fair wage & UIF calculator</div>
-          </div>
-          <div className="bg-white/50 sm:bg-transparent p-3 sm:p-0 rounded-xl border border-stone-200/50 sm:border-0">
-            <div className="text-xl sm:text-2xl font-bold text-stone-900">JHB · DBN · CPT</div>
-            <div className="text-[11px] sm:text-xs text-stone-500 mt-0.5">Three Core Metros</div>
-            <div className="text-[11px] sm:text-xs text-stone-600 mt-0.5">Gauteng, KZN & Western Cape</div>
-          </div>
-          <div className="bg-white/50 sm:bg-transparent p-3 sm:p-0 rounded-xl border border-stone-200/50 sm:border-0">
-            <div className="text-xl sm:text-2xl font-bold text-stone-900 tabular-nums">0% Cuts</div>
-            <div className="text-[11px] sm:text-xs text-stone-500 mt-0.5">Direct Subscription Model</div>
-            <div className="text-[11px] sm:text-xs text-stone-600 mt-0.5">No agency commission fees</div>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            {/* JHB Card */}
+            <button
+              onClick={() => {
+                setSelectedCity('Johannesburg');
+                onExploreClick();
+              }}
+              className={`p-4 rounded-2xl border text-left cursor-pointer transition-all ${
+                selectedCity === 'Johannesburg'
+                  ? 'border-pink-500 bg-pink-50/50 ring-2 ring-pink-500/20'
+                  : 'border-slate-200 bg-white hover:border-slate-300 shadow-xs'
+              }`}
+            >
+              <div className="flex items-center justify-between">
+                <span className="font-extrabold text-sm text-slate-900">Johannesburg & Gauteng</span>
+                <span className="text-xs font-bold text-pink-600">Sandton · Rosebank</span>
+              </div>
+              <p className="text-xs text-slate-500 mt-1">
+                Live-in garden cottages, Gautrain routes & preschool routines.
+              </p>
+              <div className="text-[11px] font-semibold text-slate-700 mt-2">
+                Typical: R7,200 – R8,500/mo (R50–R65/hr)
+              </div>
+            </button>
+
+            {/* Durban Card */}
+            <button
+              onClick={() => {
+                setSelectedCity('Durban');
+                onExploreClick();
+              }}
+              className={`p-4 rounded-2xl border text-left cursor-pointer transition-all ${
+                selectedCity === 'Durban'
+                  ? 'border-pink-500 bg-pink-50/50 ring-2 ring-pink-500/20'
+                  : 'border-slate-200 bg-white hover:border-slate-300 shadow-xs'
+              }`}
+            >
+              <div className="flex items-center justify-between">
+                <span className="font-extrabold text-sm text-slate-900">Durban & North Coast</span>
+                <span className="text-xs font-bold text-pink-600">Umhlanga · Ballito</span>
+              </div>
+              <p className="text-xs text-slate-500 mt-1">
+                Newborn night nurses, sleep conditioning & live-out care.
+              </p>
+              <div className="text-[11px] font-semibold text-slate-700 mt-2">
+                Typical: R6,800 – R9,500/mo (R48–R75/hr)
+              </div>
+            </button>
+
+            {/* Cape Town Card */}
+            <button
+              onClick={() => {
+                setSelectedCity('Cape Town');
+                onExploreClick();
+              }}
+              className={`p-4 rounded-2xl border text-left cursor-pointer transition-all ${
+                selectedCity === 'Cape Town'
+                  ? 'border-pink-500 bg-pink-50/50 ring-2 ring-pink-500/20'
+                  : 'border-slate-200 bg-white hover:border-slate-300 shadow-xs'
+              }`}
+            >
+              <div className="flex items-center justify-between">
+                <span className="font-extrabold text-sm text-slate-900">Cape Town & Peninsula</span>
+                <span className="text-xs font-bold text-pink-600">Atlantic Seaboard</span>
+              </div>
+              <p className="text-xs text-slate-500 mt-1">
+                Au Pairs with vehicles, school drop-offs & homework tutoring.
+              </p>
+              <div className="text-[11px] font-semibold text-slate-700 mt-2">
+                Typical: R8,200 – R11,000/mo (R60–R90/hr)
+              </div>
+            </button>
           </div>
         </div>
       </div>

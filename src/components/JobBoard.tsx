@@ -107,13 +107,13 @@ export const JobBoard: React.FC<JobBoardProps> = ({
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-4 border-b border-stone-200">
         <div>
-          <div className="text-xs font-semibold uppercase tracking-wider text-amber-800">
+          <div className="text-xs font-bold uppercase tracking-wider text-pink-600">
             South African Family Vacancies
           </div>
-          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-stone-900 mt-1">
+          <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-950 mt-1">
             Childcare Jobs & Family Postings
           </h2>
-          <div className="text-xs sm:text-sm text-stone-500 mt-1">
+          <div className="text-xs sm:text-sm text-slate-500 mt-1 font-medium">
             Browse verified household vacancies in Johannesburg, Durban, and Cape Town
           </div>
         </div>
@@ -121,7 +121,7 @@ export const JobBoard: React.FC<JobBoardProps> = ({
         <div className="flex items-center gap-3 w-full sm:w-auto">
           <button
             onClick={() => setShowPostModal(true)}
-            className="w-full sm:w-auto px-4 py-2.5 min-h-[44px] text-xs font-semibold text-white bg-amber-700 hover:bg-amber-800 active:bg-amber-900 rounded-xl transition-colors cursor-pointer flex items-center justify-center gap-1.5 shadow-xs"
+            className="w-full sm:w-auto px-5 py-2.5 min-h-[44px] text-xs font-bold text-white bg-pink-600 hover:bg-pink-700 active:bg-pink-800 rounded-xl transition-all cursor-pointer flex items-center justify-center gap-1.5 shadow-sm shadow-pink-600/30"
           >
             <Plus className="w-4 h-4" />
             <span>Post a Family Job</span>
@@ -130,37 +130,37 @@ export const JobBoard: React.FC<JobBoardProps> = ({
       </div>
 
       {/* Filter Row */}
-      <div className="bg-white border border-stone-200 rounded-2xl p-3.5 sm:p-4 shadow-xs flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4">
+      <div className="bg-white border border-slate-200/90 rounded-2xl p-3.5 sm:p-4 shadow-xs flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4">
         {/* City Filter */}
-        <div className="grid grid-cols-4 w-full sm:w-auto p-1 bg-stone-100 rounded-xl text-xs font-medium text-stone-600">
+        <div className="grid grid-cols-4 w-full sm:w-auto p-1 bg-slate-100 rounded-xl text-xs font-semibold text-slate-600">
           <button
             onClick={() => setSelectedCity('All')}
-            className={`py-2 px-2.5 min-h-[38px] rounded-lg transition-colors cursor-pointer text-center truncate ${
-              selectedCity === 'All' ? 'bg-white text-stone-900 font-bold shadow-xs' : 'hover:text-stone-900'
+            className={`py-2 px-2.5 min-h-[38px] rounded-lg transition-all cursor-pointer text-center truncate ${
+              selectedCity === 'All' ? 'bg-pink-600 text-white font-bold shadow-xs' : 'hover:text-slate-950'
             }`}
           >
             All SA
           </button>
           <button
             onClick={() => setSelectedCity('Johannesburg')}
-            className={`py-2 px-2.5 min-h-[38px] rounded-lg transition-colors cursor-pointer text-center truncate ${
-              selectedCity === 'Johannesburg' ? 'bg-white text-stone-900 font-bold shadow-xs' : 'hover:text-stone-900'
+            className={`py-2 px-2.5 min-h-[38px] rounded-lg transition-all cursor-pointer text-center truncate ${
+              selectedCity === 'Johannesburg' ? 'bg-pink-600 text-white font-bold shadow-xs' : 'hover:text-slate-950'
             }`}
           >
             JHB
           </button>
           <button
             onClick={() => setSelectedCity('Durban')}
-            className={`py-2 px-2.5 min-h-[38px] rounded-lg transition-colors cursor-pointer text-center truncate ${
-              selectedCity === 'Durban' ? 'bg-white text-stone-900 font-bold shadow-xs' : 'hover:text-stone-900'
+            className={`py-2 px-2.5 min-h-[38px] rounded-lg transition-all cursor-pointer text-center truncate ${
+              selectedCity === 'Durban' ? 'bg-pink-600 text-white font-bold shadow-xs' : 'hover:text-slate-950'
             }`}
           >
             Durban
           </button>
           <button
             onClick={() => setSelectedCity('Cape Town')}
-            className={`py-2 px-2.5 min-h-[38px] rounded-lg transition-colors cursor-pointer text-center truncate ${
-              selectedCity === 'Cape Town' ? 'bg-white text-stone-900 font-bold shadow-xs' : 'hover:text-stone-900'
+            className={`py-2 px-2.5 min-h-[38px] rounded-lg transition-all cursor-pointer text-center truncate ${
+              selectedCity === 'Cape Town' ? 'bg-pink-600 text-white font-bold shadow-xs' : 'hover:text-slate-950'
             }`}
           >
             Cape Town
